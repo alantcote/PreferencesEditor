@@ -9,10 +9,10 @@ import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
 import javafx.fxml.FXML;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.control.TreeView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
+import javafx.scene.layout.BorderPane;
 
 public class PreferencesEditorController {
 
