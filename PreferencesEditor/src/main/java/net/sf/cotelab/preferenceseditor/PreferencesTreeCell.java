@@ -28,18 +28,18 @@ public class PreferencesTreeCell extends TreeCell<Preferences> {
 
 	@Override
 	public void cancelEdit() {
-		System.out.println("PreferencesTreeCell.cancelEdit(): calling establishNormalGUI()");
+//		System.out.println("PreferencesTreeCell.cancelEdit(): calling establishNormalGUI()");
 
 		establishNormalGUI();
 
-		System.out.println("PreferencesTreeCell.cancelEdit(): calling super.cancelEdit()");
+//		System.out.println("PreferencesTreeCell.cancelEdit(): calling super.cancelEdit()");
 
 		super.cancelEdit();
 	}
 
 	@Override
 	public void startEdit() {
-		System.out.println("PreferencesTreeCell.startEdit(): entry");
+//		System.out.println("PreferencesTreeCell.startEdit(): entry");
 
 		super.startEdit();
 
@@ -49,11 +49,11 @@ public class PreferencesTreeCell extends TreeCell<Preferences> {
 		TreeItem<Preferences> theTreeItem = tv.getTreeItem(index);
 		final Preferences pref = theTreeItem.getValue();
 
-		System.out.println("PreferencesTreeCell.startEdit(): pref = " + pref);
+//		System.out.println("PreferencesTreeCell.startEdit(): pref = " + pref);
 
 		nameTextField.setText(pref.name());
 
-		System.out.println("PreferencesTreeCell.startEdit(): calling nameTextField.setOnAction()");
+//		System.out.println("PreferencesTreeCell.startEdit(): calling nameTextField.setOnAction()");
 
 		nameTextField.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -70,7 +70,7 @@ public class PreferencesTreeCell extends TreeCell<Preferences> {
 
 		});
 
-		System.out.println("PreferencesTreeCell.startEdit(): calling nameTextField.addEventHandler()");
+//		System.out.println("PreferencesTreeCell.startEdit(): calling nameTextField.addEventHandler()");
 
 		nameTextField.addEventHandler(KeyEvent.KEY_TYPED, new EventHandler<KeyEvent>() {
 
@@ -83,21 +83,21 @@ public class PreferencesTreeCell extends TreeCell<Preferences> {
 
 		});
 
-		System.out.println("PreferencesTreeCell.startEdit(): calling setText(null)");
+//		System.out.println("PreferencesTreeCell.startEdit(): calling setText(null)");
 
 		setText(null);
 
-		System.out.println("PreferencesTreeCell.startEdit(): calling setGraphic(nameTextField)");
+//		System.out.println("PreferencesTreeCell.startEdit(): calling setGraphic(nameTextField)");
 
 		setGraphic(nameTextField);
 
-		System.out.println("PreferencesTreeCell.startEdit(): exit");
+//		System.out.println("PreferencesTreeCell.startEdit(): exit");
 	}
 
 	public String textForPref(Preferences pref) {
 		String tfp;
 
-		System.out.println("PreferencesTreeCell.textForPref(): pref = " + pref);
+//		System.out.println("PreferencesTreeCell.textForPref(): pref = " + pref);
 
 		if (pref == null) {
 			tfp = "Preferences";
@@ -121,18 +121,18 @@ public class PreferencesTreeCell extends TreeCell<Preferences> {
 
 	@Override
 	public void updateIndex(int i) {
-		System.out.println("PreferencesTreeCell.updateIndex(): i = " + i);
+//		System.out.println("PreferencesTreeCell.updateIndex(): i = " + i);
 
 		super.updateIndex(i);
 
-		System.out.println("PreferencesTreeCell.updateIndex(): calling establishNormalGUI(pref): i = " + i);
+//		System.out.println("PreferencesTreeCell.updateIndex(): calling establishNormalGUI(pref): i = " + i);
 
 		establishNormalGUI();
 	}
 
 	@Override
 	public void updateSelected(boolean selected) {
-		System.out.println("PreferencesTreeCell.updateSelected(): selected = " + selected);
+//		System.out.println("PreferencesTreeCell.updateSelected(): selected = " + selected);
 
 		super.updateSelected(selected);
 
@@ -145,7 +145,7 @@ public class PreferencesTreeCell extends TreeCell<Preferences> {
 		TreeView<Preferences> tv = getTreeView();
 		TreeItem<Preferences> tc = tv.getTreeItem(getIndex());
 
-		System.out.println("PreferencesTreeCell.establishNormalGUI(): getIndex() = " + getIndex());
+//		System.out.println("PreferencesTreeCell.establishNormalGUI(): getIndex() = " + getIndex());
 
 		super.setGraphic(null);
 
@@ -154,7 +154,7 @@ public class PreferencesTreeCell extends TreeCell<Preferences> {
 		} else {
 			Preferences pref = tc.getValue();
 
-			System.out.println("PreferencesTreeCell.establishNormalGUI(): calling textForPref(pref): pref = " + pref);
+//			System.out.println("PreferencesTreeCell.establishNormalGUI(): calling textForPref(pref): pref = " + pref);
 
 			setText(textForPref(pref));
 
@@ -173,8 +173,8 @@ public class PreferencesTreeCell extends TreeCell<Preferences> {
 	}
 
 	protected void updateItem(Preferences item, boolean empty) {
-		System.out.println("PreferencesTreeCell.updateItem(): item = " + item);
-		System.out.println("PreferencesTreeCell.updateItem(): empty = " + empty);
+//		System.out.println("PreferencesTreeCell.updateItem(): item = " + item);
+//		System.out.println("PreferencesTreeCell.updateItem(): empty = " + empty);
 
 		super.updateItem(item, empty);
 
@@ -184,7 +184,7 @@ public class PreferencesTreeCell extends TreeCell<Preferences> {
 			setText(null);
 			setGraphic(null);
 		} else {
-			System.out.println("PreferencesTreeCell.updateItem(): calling textForPref(item): item = " + item);
+//			System.out.println("PreferencesTreeCell.updateItem(): calling textForPref(item): item = " + item);
 
 			setText(textForPref(item));
 

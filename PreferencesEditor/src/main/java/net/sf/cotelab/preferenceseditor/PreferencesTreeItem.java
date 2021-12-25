@@ -18,16 +18,16 @@ public class PreferencesTreeItem extends TreeItem<Preferences> {
 
 	@Override
 	public ObservableList<TreeItem<Preferences>> getChildren() {
-		System.out.println("PreferencesTreeItem.getChildren(): pref = " + getValue());
-		System.out.println("PreferencesTreeItem.getChildren(): childItemsCached = " + childItemsCached);
+//		System.out.println("PreferencesTreeItem.getChildren(): pref = " + getValue());
+//		System.out.println("PreferencesTreeItem.getChildren(): childItemsCached = " + childItemsCached);
 
 		if (!childItemsCached) {
 			cachedChildItems = buildChildren(this);
 			childItemsCached = true;
 			super.getChildren().setAll(cachedChildItems);
 
-			System.out
-					.println("PreferencesTreeItem.getChildren(): cachedChildItems.size() = " + cachedChildItems.size());
+//			System.out
+//					.println("PreferencesTreeItem.getChildren(): cachedChildItems.size() = " + cachedChildItems.size());
 		}
 
 		return super.getChildren();
@@ -65,7 +65,7 @@ public class PreferencesTreeItem extends TreeItem<Preferences> {
 		Preferences pref = treeItem.getValue();
 		String[] childrenNames;
 
-		System.out.println("PreferencesTreeItem.buildChildren(): pref = " + pref);
+//		System.out.println("PreferencesTreeItem.buildChildren(): pref = " + pref);
 
 		if (pref == null) {
 			// special case: null represents the overall root
@@ -82,11 +82,11 @@ public class PreferencesTreeItem extends TreeItem<Preferences> {
 			try {
 				childrenNames = pref.childrenNames();
 
-				System.out.println("PreferencesTreeItem.buildChildren(): childrenNames = " + childrenNames);
+//				System.out.println("PreferencesTreeItem.buildChildren(): childrenNames = " + childrenNames);
 
-				for (String childName : childrenNames) {
-					System.out.println("PreferencesTreeItem.buildChildren(): childName = " + childName);
-				}
+//				for (String childName : childrenNames) {
+//					System.out.println("PreferencesTreeItem.buildChildren(): childName = " + childName);
+//				}
 
 				if (childrenNames.length > 0) {
 					ObservableList<TreeItem<Preferences>> children = FXCollections.observableArrayList();
@@ -97,7 +97,7 @@ public class PreferencesTreeItem extends TreeItem<Preferences> {
 						children.add(createNode(childPref));
 					}
 
-					System.out.println("PreferencesTreeItem.buildChildren(): children = " + children);
+//					System.out.println("PreferencesTreeItem.buildChildren(): children = " + children);
 
 					return children;
 				}
