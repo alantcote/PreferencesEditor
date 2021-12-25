@@ -1,24 +1,24 @@
 -classpath
-'D:/alant/Projects/Cote/eclipse-2021-workspace/PreferencesEditor/target/classes;C:/Users/TEST/.m2/repository/org/openjfx/javafx-controls/17.0.1/javafx-controls-17.0.1-win.jar;C:/Users/TEST/.m2/repository/org/openjfx/javafx-controls/17.0.1/javafx-controls-17.0.1.jar;C:/Users/TEST/.m2/repository/org/openjfx/javafx-fxml/17.0.1/javafx-fxml-17.0.1-win.jar;C:/Users/TEST/.m2/repository/org/openjfx/javafx-base/17.0.1/javafx-base-17.0.1-win.jar;C:/Users/TEST/.m2/repository/org/openjfx/javafx-graphics/17.0.1/javafx-graphics-17.0.1.jar;C:/Users/TEST/.m2/repository/org/openjfx/javafx-graphics/17.0.1/javafx-graphics-17.0.1-win.jar;C:/Users/TEST/.m2/repository/org/openjfx/javafx-base/17.0.1/javafx-base-17.0.1.jar'
+'C:/Users/TEST/git/PreferencesEditor/PreferencesEditor/target/classes;C:/Users/TEST/.m2/repository/org/openjfx/javafx-controls/17.0.1/javafx-controls-17.0.1-win.jar;C:/Users/TEST/.m2/repository/org/openjfx/javafx-swing/17.0.1/javafx-swing-17.0.1-win.jar;C:/Users/TEST/.m2/repository/org/openjfx/javafx-controls/17.0.1/javafx-controls-17.0.1.jar;C:/Users/TEST/.m2/repository/org/openjfx/javafx-web/17.0.1/javafx-web-17.0.1-win.jar;C:/Users/TEST/.m2/repository/org/openjfx/javafx-fxml/17.0.1/javafx-fxml-17.0.1-win.jar;C:/Users/TEST/.m2/repository/org/openjfx/javafx-media/17.0.1/javafx-media-17.0.1-win.jar;C:/Users/TEST/.m2/repository/org/openjfx/javafx-base/17.0.1/javafx-base-17.0.1-win.jar;C:/Users/TEST/.m2/repository/org/openjfx/javafx-graphics/17.0.1/javafx-graphics-17.0.1.jar;C:/Users/TEST/.m2/repository/org/openjfx/javafx-graphics/17.0.1/javafx-graphics-17.0.1-win.jar;C:/Users/TEST/.m2/repository/org/openjfx/javafx-media/17.0.1/javafx-media-17.0.1.jar;C:/Users/TEST/.m2/repository/org/openjfx/javafx-base/17.0.1/javafx-base-17.0.1.jar'
 -encoding
 'UTF-8'
 -protected
 -sourcepath
-'D:/alant/Projects/Cote/eclipse-2021-workspace/PreferencesEditor/src/main/java'
+'C:/Users/TEST/git/PreferencesEditor/PreferencesEditor/src/main/java'
 -author
 -bottom
-'Copyright &#169; 2021 <a href="https://github.com/alantcote">Cote\' Lab</a>. All rights reserved.'
+'Copyright &#169; 2014&#x2013;2021 <a href="https://github.com/alantcote">Cote\' Lab</a>. All rights reserved.'
 -charset
 'UTF-8'
 -d
-'D:/alant/Projects/Cote/eclipse-2021-workspace/PreferencesEditor/target/apidocs'
+'C:/Users/TEST/git/PreferencesEditor/PreferencesEditor/target/apidocs'
 -docencoding
 'UTF-8'
 -doctitle
-'cotelab:preferenceseditor 0.0.1-SNAPSHOT API'
+'cotelab:labellelucie 0.1.0-SNAPSHOT API'
 -linkoffline
-'http://docs.oracle.com/javase/7/docs/api' 'D:/alant/Projects/Cote/eclipse-2021-workspace/PreferencesEditor/target/javadoc-bundle-options'
+'http://docs.oracle.com/javase/7/docs/api' 'C:/Users/TEST/git/PreferencesEditor/PreferencesEditor/target/javadoc-bundle-options'
 -use
 -version
 -windowtitle
-'cotelab:preferenceseditor 0.0.1-SNAPSHOT API'
+'cotelab:labellelucie 0.1.0-SNAPSHOT API'

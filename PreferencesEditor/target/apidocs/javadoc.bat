@@ -1,1 +1,1 @@
-"C:\Program Files\Java\jdk-17.0.1\bin\javadoc.exe" -javafx @options @packages @argfile
+"C:\Program Files\Java\jdk-17.0.1\bin\javadoc.exe" @options @packages @argfile

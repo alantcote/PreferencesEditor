@@ -26,21 +26,21 @@
          <bottom>
             <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
               <buttons>
-                <Button cancelButton="true" mnemonicParsing="false" text="Cancel" />
-                  <Button mnemonicParsing="false" text="Apply" />
+                <Button fx:id="propsPaneCancelButton" cancelButton="true" mnemonicParsing="false" text="Cancel" />
+                  <Button fx:id="propsPaneApplyButton" mnemonicParsing="false" text="Apply" />
               </buttons>
             </ButtonBar>
          </bottom>
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <top>
-                  <TextField BorderPane.alignment="CENTER" />
+                  <TextField fx:id="propsPaneNameField" BorderPane.alignment="CENTER" />
                </top>
                <center>
-                  <TableView editable="true" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
+                  <TableView fx:id="prefsPaneTable" editable="true" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="true" BorderPane.alignment="CENTER">
                     <columns>
-                      <TableColumn prefWidth="75.0" sortable="false" text="Key" />
-                      <TableColumn prefWidth="75.0" text="Def" />
+                      <TableColumn fx:id="keyColumn" prefWidth="75.0" sortable="false" text="Key" />
+                      <TableColumn fx:id="defColumn" prefWidth="75.0" text="Def" />
                     </columns>
                   </TableView>
                </center>

@@ -4,6 +4,7 @@ import java.util.prefs.NodeChangeEvent;
 import java.util.prefs.NodeChangeListener;
 import java.util.prefs.Preferences;
 
+import javafx.beans.property.ObjectProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.TextField;
@@ -11,6 +12,7 @@ import javafx.scene.control.TreeCell;
 import javafx.scene.control.TreeItem;
 //import net.sf.cotelab.jfxdemo.prefbrowser.PreferencesBrowser;
 import javafx.scene.control.TreeView;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
@@ -23,7 +25,10 @@ public class PreferencesTreeCell extends TreeCell<Preferences> {
 	public PreferencesTreeCell() {
 		super();
 
-//		this.preferencesBrowser = preferencesBrowser;
+		ObjectProperty<EventHandler<? super ContextMenuEvent>> ocmr =
+				onContextMenuRequestedProperty();
+		
+		ocmr.setValue(new ContextMenuRequestHandler(this));
 	}
 
 	@Override
