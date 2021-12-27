@@ -1,18 +1,26 @@
 package net.sf.cotelab.preferenceseditor;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.prefs.BackingStoreException;
 import java.util.prefs.Preferences;
 
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.util.Callback;
 
 public class PropsPaneController {
 	// Cancel button in the properties pane
@@ -22,7 +30,7 @@ public class PropsPaneController {
 	protected Button cancelButton;
 
 	// Properties table Def column in the properties table
-	protected TableColumn<String, String> defColumn;
+	protected TableColumn<Preference, String> defColumn;
 
 	// The state of editing vs. not editing
 	protected boolean editing = false;
@@ -31,7 +39,7 @@ public class PropsPaneController {
 	protected Label errMssgLabel;
 
 	// Properties table Key column in the properties table
-	protected TableColumn<String, String> keyColumn;
+	protected TableColumn<Preference, String> keyColumn;
 
 	// TextField in the properties pane
 	protected TextField nodeNameTextField;
@@ -40,10 +48,14 @@ public class PropsPaneController {
 	protected SimpleObjectProperty<Preferences> preferencesProperty = new SimpleObjectProperty<>();
 
 	// Properties table in the properties pane
-	protected TableView<String> prefsTable;
+	protected TableView<Preference> prefsTable;
+	
+	protected List<Preference> preferenceList = new ArrayList<Preference>();
+	protected ObservableList<Preference> preferenceMembers =
+			FXCollections.observableArrayList(preferenceList);
 
-	public PropsPaneController(TableColumn<String, String> defColumn, Label errMssgLabel,
-			TableColumn<String, String> keyColumn, TextField aNodeNameTextField, TableView<String> prefsPaneTable,
+	public PropsPaneController(TableColumn<Preference, String> defColumn, Label errMssgLabel,
+			TableColumn<Preference, String> keyColumn, TextField aNodeNameTextField, TableView<Preference> prefsPaneTable,
 			Button propsPaneApplyButton, Button propsPaneCancelButton, TextField propsPaneNameField) {
 		this.defColumn = defColumn;
 		this.errMssgLabel = errMssgLabel;
@@ -54,6 +66,20 @@ public class PropsPaneController {
 		cancelButton = propsPaneCancelButton;
 
 //		System.out.println("PropsPaneController.PropsPaneController(): nodeNameTextField = " + nodeNameTextField);
+		
+		prefsTable.setItems(preferenceMembers);
+		 keyColumn.setCellValueFactory(new Callback<CellDataFeatures<Preference, String>, ObservableValue<String>>() {
+		     public ObservableValue<String> call(CellDataFeatures<Preference, String> p) {
+		         // p.getValue() returns the Person instance for a particular TableView row
+		         return p.getValue().keyProperty();
+		     }
+		 });
+		 defColumn.setCellValueFactory(new Callback<CellDataFeatures<Preference, String>, ObservableValue<String>>() {
+		     public ObservableValue<String> call(CellDataFeatures<Preference, String> p) {
+		         // p.getValue() returns the Person instance for a particular TableView row
+		         return p.getValue().defProperty();
+		     }
+		 });
 
 		applyButton.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -104,14 +130,27 @@ public class PropsPaneController {
 		} else {
 			nodeNameTextField.setEditable(true);
 			prefsTable.setEditable(true);
+			
+			preferenceMembers.clear();
+			
+			try {
+				String[] keys = prefsItem.keys();
+				
+				for (String key : keys) {
+					String def = prefsItem.get(key, "<undefined>");
+					
+					preferenceMembers.add(new Preference(key, def));
+				}
+			} catch (BackingStoreException e) {
+				errMssgLabel.setText(e.getLocalizedMessage());
+				e.printStackTrace();
+			}
 		}
 	}
 
 	protected void cancelEditing() {
 		Preferences prefsItem = getPreferences();
 		setEditing(false);
-
-		// TODO load the data from preferencesItem into the displays
 
 		setNameFieldContent(prefsItem);
 		setTableContent(prefsItem);

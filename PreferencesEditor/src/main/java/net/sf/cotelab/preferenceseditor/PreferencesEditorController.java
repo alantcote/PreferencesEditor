@@ -27,13 +27,13 @@ import javafx.scene.layout.BorderPane;
 public class PreferencesEditorController {
 
 	@FXML // Properties table Def column in the properties table
-	protected TableColumn<String, String> defColumn;
+	protected TableColumn<Preference, String> defColumn;
 	
 	@FXML // Error message Label
 	protected Label errMssgLabel;
 
 	@FXML // Properties table Key column in the properties table
-	protected TableColumn<String, String> keyColumn;
+	protected TableColumn<Preference, String> keyColumn;
 
 	@FXML // URL location of the FXML file that was given to the FXMLLoader
 	protected URL location;
@@ -42,7 +42,7 @@ public class PreferencesEditorController {
 	protected TextField nodeNameTextField;
 
 	@FXML // Properties table in the properties pane
-	protected TableView<String> prefsPaneTable;
+	protected TableView<Preference> prefsPaneTable;
 
 	@FXML // TreeView for preferences
 	protected TreeView<Preferences> prefsTreeView;
@@ -117,18 +117,6 @@ public class PreferencesEditorController {
 				}
 			}
 
-		});
-		
-		ReadOnlyObjectProperty<Preferences> ppcPrefsProp =
-				propsPaneController.getPreferencesProperty();
-		
-		ppcPrefsProp.addListener(new ChangeListener<Preferences>() {
-
-			@Override
-			public void changed(ObservableValue<? extends Preferences> arg0, Preferences arg1, Preferences arg2) {
-				System.out.println("PreferencesEditorController.wirePropsPane()[ppcPrefsProps listener]: entry");
-				prefsTreeView.refresh();
-			}
 		});
 		
 	}

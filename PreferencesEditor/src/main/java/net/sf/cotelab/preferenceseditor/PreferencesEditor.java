@@ -12,7 +12,7 @@ public class PreferencesEditor extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("PreferencesEditor.fxml"));
-			Scene scene = new Scene(root,400,400);
+			Scene scene = new Scene(root,1000,900);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Preferences Editor");
