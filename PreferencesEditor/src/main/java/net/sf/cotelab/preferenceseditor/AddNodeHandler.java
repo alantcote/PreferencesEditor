@@ -103,7 +103,7 @@ public class AddNodeHandler implements EventHandler<ActionEvent> {
 						TreeView<Preferences> boundTree = preferencesTreeCell.getTreeView();
 						
 						boundItem.setValue(updatedPref);
-						boundItem.setChildItemsCached(false);
+//						boundItem.setChildItemsCached(false);
 						boundTree.refresh();
 					}
 				}

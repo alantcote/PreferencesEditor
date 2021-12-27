@@ -8,10 +8,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.prefs.Preferences;
 
+import javafx.beans.property.ReadOnlyObjectProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -23,10 +27,13 @@ import javafx.scene.layout.BorderPane;
 public class PreferencesEditorController {
 
 	@FXML // Properties table Def column in the properties table
-	protected TableColumn defColumn;
+	protected TableColumn<String, String> defColumn;
+	
+	@FXML // Error message Label
+	protected Label errMssgLabel;
 
 	@FXML // Properties table Key column in the properties table
-	protected TableColumn keyColumn;
+	protected TableColumn<String, String> keyColumn;
 
 	@FXML // URL location of the FXML file that was given to the FXMLLoader
 	protected URL location;
@@ -39,12 +46,15 @@ public class PreferencesEditorController {
 
 	@FXML // TreeView for preferences
 	protected TreeView<Preferences> prefsTreeView;
+//	protected TreeView<String> prefsTreeView;
 
 	@FXML // Cancel button in the properties pane
 	protected Button propsPaneApplyButton;
 
 	@FXML // Cancel button in the properties pane
 	protected Button propsPaneCancelButton;
+
+	protected PropsPaneController propsPaneController;
 
 	@FXML // Name field in the properties pane
 	protected TextField propsPaneNameField;
@@ -62,24 +72,32 @@ public class PreferencesEditorController {
 		inizPrefsTreeView();
 		inizPropsPane();
 
-		// TODO set up the wiring
+		// set up the wiring
+		wirePropsPaneToPrefsTreeView();
 	}
 
 	protected void inizPrefsTreeView() {
+		PreferencesTreeItem rootTreeItem = new PreferencesTreeItem(null);
+		
 		prefsTreeView.setCellFactory(new PreferencesTreeCellFactory());
-		prefsTreeView.setRoot((TreeItem<Preferences>) new PreferencesTreeItem(null));
+		prefsTreeView.setRoot(rootTreeItem);
 		prefsTreeView.refresh();
 	}
 
 	protected void inizPropsPane() {
-		propsPaneController = new PropsPaneController(defColumn, keyColumn, nodeNameTextField, prefsPaneTable,
+//		System.out.println("PreferencesEditorController.inizPropsPane(): nodeNameTextField = " + nodeNameTextField);
+		
+		propsPaneController = new PropsPaneController(defColumn, errMssgLabel, keyColumn, nodeNameTextField, prefsPaneTable,
 				propsPaneApplyButton, propsPaneCancelButton, propsPaneNameField);
 	}
-	protected PropsPaneController propsPaneController;
 
 	protected void wirePropsPaneToPrefsTreeView() {
 		MultipleSelectionModel<TreeItem<Preferences>> treeSelModel = prefsTreeView.getSelectionModel();
 		ObservableList<? extends Integer> prefsTreeViewSelectIndices = treeSelModel.getSelectedIndices();
+		
+		System.out.println("PropsPaneController.wirePropsPaneToPrefsTreeView(): entry");
+		
+		propsPaneController.setPreferences(null);
 
 		prefsTreeViewSelectIndices.addListener(new ListChangeListener<Integer>() {
 
@@ -89,14 +107,30 @@ public class PreferencesEditorController {
 
 				ObservableList<? extends Integer> prefsTreeViewSelectIndices = arg0.getList();
 
-				int selIndex = prefsTreeViewSelectIndices.get(0);
+				if (!prefsTreeViewSelectIndices.isEmpty()) {
+					int selIndex = prefsTreeViewSelectIndices.get(0);
 
-				System.out.println("prefsTreeView selection change: selIndex = " + selIndex);
+					System.out.println("prefsTreeView selection change: selIndex = " + selIndex);
 
-				// TODO tell the props pane about the change
+					// tell the props pane about the change
+					propsPaneController.setPreferences(prefsTreeView.getTreeItem(selIndex).getValue());
+				}
 			}
 
 		});
+		
+		ReadOnlyObjectProperty<Preferences> ppcPrefsProp =
+				propsPaneController.getPreferencesProperty();
+		
+		ppcPrefsProp.addListener(new ChangeListener<Preferences>() {
+
+			@Override
+			public void changed(ObservableValue<? extends Preferences> arg0, Preferences arg1, Preferences arg2) {
+				System.out.println("PreferencesEditorController.wirePropsPane()[ppcPrefsProps listener]: entry");
+				prefsTreeView.refresh();
+			}
+		});
+		
 	}
 
 }

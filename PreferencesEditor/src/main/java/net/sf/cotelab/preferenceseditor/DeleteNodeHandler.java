@@ -40,13 +40,10 @@ public class DeleteNodeHandler implements EventHandler<ActionEvent> {
 			System.out.println("DeletePrefHandler.handle(): result = " + resultType);
 
 			if (okButtonType == resultType) {
-				PreferencesTreeItem parentTreeItem =
-						(PreferencesTreeItem) theTreeCell.getTreeItem().getParent();
-
 				try {
 					pref.removeNode();
 
-					parentTreeItem.setChildItemsCached(false);
+//					parentTreeItem.setChildItemsCached(false);
 //					theTreeCell.getTreeView().refresh();
 				} catch (BackingStoreException e) {
 					// report it and continue
