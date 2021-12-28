@@ -4,6 +4,7 @@ import java.util.prefs.Preferences;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.event.EventHandler;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.TreeCell;
 import javafx.scene.input.ContextMenuEvent;
 
@@ -182,7 +183,10 @@ public class PreferencesTreeCell extends TreeCell<Preferences> {
 		} else {
 			System.out.println("PreferencesTreeCell.updateItem(): calling textForPref(item): item = " + item);
 
+			String tfp = textForPref(item);
+			
 			setText(textForPref(item));
+			setTooltip(new Tooltip(tfp));
 		}
 	}
 }
