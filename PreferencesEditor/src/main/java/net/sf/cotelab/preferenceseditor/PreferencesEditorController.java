@@ -74,6 +74,8 @@ public class PreferencesEditorController {
 
 		// set up the wiring
 		wirePropsPaneToPrefsTreeView();
+		
+		prefsTreeView.getSelectionModel().selectIndices(0);
 	}
 
 	protected void inizPrefsTreeView() {

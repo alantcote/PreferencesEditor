@@ -8,10 +8,10 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
 
-public class ContextMenuRequestHandler implements EventHandler<ContextMenuEvent> {
+public class PrefCellContextMenuRequestHandler implements EventHandler<ContextMenuEvent> {
 	protected PreferencesTreeCell preferencesTreeCell;
 
-	public ContextMenuRequestHandler(PreferencesTreeCell preferencesTreeCell) {
+	public PrefCellContextMenuRequestHandler(PreferencesTreeCell preferencesTreeCell) {
 		this.preferencesTreeCell = preferencesTreeCell;
 	}
 

@@ -22,7 +22,7 @@ public class Preference {
 		return keyProperty().get();
 	}
 
-	public String getLastName() {
+	public String getDef() {
 		return defProperty().get();
 	}
 

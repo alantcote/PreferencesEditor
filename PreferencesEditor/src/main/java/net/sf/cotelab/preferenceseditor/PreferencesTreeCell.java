@@ -43,7 +43,7 @@ public class PreferencesTreeCell extends TreeCell<Preferences> {
 
 		ObjectProperty<EventHandler<? super ContextMenuEvent>> ocmr = onContextMenuRequestedProperty();
 
-		ocmr.setValue(new ContextMenuRequestHandler(this));
+		ocmr.setValue(new PrefCellContextMenuRequestHandler(this));
 	}
 
 //	@Override
