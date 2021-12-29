@@ -33,7 +33,7 @@
 		<timestamp>${maven.build.timestamp}</timestamp>
 		<maven.build.timestamp.format>dd-MM-yyyy HH:mm</maven.build.timestamp.format>
 		<java.version>17</java.version>
-        <javafx.main.class>net.sf.cotelab.lbl.PreferencesEditor</javafx.main.class>
+        <javafx.main.class>net.sf.cotelab.preferenceseditor.PreferencesEditor</javafx.main.class>
         <main.class>${javafx.main.class}</main.class>
 		<javafx.classifier>win</javafx.classifier>
 		<openjfx.version>18-ea+8</openjfx.version>
@@ -114,7 +114,6 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
-
 		<plugins>
 			<plugin>
 				<groupId>org.openjfx</groupId>
@@ -123,6 +122,52 @@
 				<configuration>
 					<mainClass>${javafx.main.class}</mainClass>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>com.akathist.maven.plugins.launch4j</groupId>
+				<artifactId>launch4j-maven-plugin</artifactId>
+				<version>2.1.2</version>
+				<executions>
+					<execution>
+						<id>l4j-gui</id>
+						<phase>package</phase>
+						<goals>
+							<goal>launch4j</goal>
+						</goals>
+						<configuration>
+							<headerType>gui</headerType>
+							<outfile>target/${project.artifactId}-${project.version}.exe</outfile>
+							<jar>target/${project.artifactId}-${project.version}.jar</jar>
+							<errTitle>${project.artifactId}</errTitle>
+							<classPath>
+								<mainClass>${javafx.main.class}</mainClass>
+							</classPath>
+							<jre>
+								<minVersion>${java.version}</minVersion>
+							</jre>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.3.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptors>
+								<descriptor>zip.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>
@@ -154,6 +199,21 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib</classpathPrefix>
+							<mainClass>${javafx.main.class}</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
 			</plugin>
 
 			<plugin>
@@ -194,24 +254,6 @@
 					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
 					<autoReleaseAfterClose>true</autoReleaseAfterClose>
 				</configuration>
-			</plugin>
-
-			<plugin>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-						<configuration>
-							<appendAssemblyId>false</appendAssemblyId>
-							<descriptors>
-								<descriptor>src/main/assembly/zip.xml</descriptor>
-							</descriptors>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
@@ -261,61 +303,47 @@
 			<version>0.1.0-SNAPSHOT</version>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-base</artifactId>
 			<version>${openjfx.version}</version>
 			<classifier>${javafx.classifier}</classifier>
-			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-controls</artifactId>
 			<version>${openjfx.version}</version>
 			<classifier>${javafx.classifier}</classifier>
-			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-fxml</artifactId>
 			<version>${openjfx.version}</version>
 			<classifier>${javafx.classifier}</classifier>
-			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-graphics</artifactId>
 			<version>${openjfx.version}</version>
 			<classifier>${javafx.classifier}</classifier>
-			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-media</artifactId>
 			<version>${openjfx.version}</version>
 			<classifier>${javafx.classifier}</classifier>
-			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-swing</artifactId>
 			<version>${openjfx.version}</version>
 			<classifier>${javafx.classifier}</classifier>
-			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.openjfx</groupId>
 			<artifactId>javafx-web</artifactId>
 			<version>${openjfx.version}</version>
 			<classifier>${javafx.classifier}</classifier>
-			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
