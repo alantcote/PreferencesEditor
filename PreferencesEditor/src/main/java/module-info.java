@@ -7,9 +7,10 @@ module preferenceseditor {
 	
 	requires java.prefs;
 	requires javafx.base;
-	requires javafx.graphics;
+	requires transitive javafx.graphics;
 	requires javafx.controls;
 	requires javafx.fxml;
+	requires javafx.web;
 	
 	opens net.sf.cotelab.preferenceseditor to javafx.fxml;
 }

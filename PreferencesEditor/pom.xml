@@ -31,7 +31,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<timestamp>${maven.build.timestamp}</timestamp>
-		<maven.build.timestamp.format>dd-MM-yyyy HH:mm</maven.build.timestamp.format>
+		<maven.build.timestamp.format>MM-dd-yyyy HH:mm</maven.build.timestamp.format>
 		<java.version>17</java.version>
         <javafx.main.class>net.sf.cotelab.preferenceseditor.PreferencesEditor</javafx.main.class>
         <main.class>${javafx.main.class}</main.class>

@@ -13,6 +13,9 @@ public class PreferencesEditor extends Application {
 		try {
 			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("PreferencesEditor.fxml"));
 			Scene scene = new Scene(root,1000,900);
+			
+			root.setUserData(getHostServices()); // covert communication to controller
+			
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Preferences Editor");
