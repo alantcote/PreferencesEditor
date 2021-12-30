@@ -27,6 +27,8 @@ import javafx.scene.layout.BorderPane;
 
 public class PreferencesEditorController {
 	public static final String HELP_ABOUT_RESOURCE = "helpAbout.html";
+	public static final String HELP_USAGE_URL =
+			"https://github.com/alantcote/PreferencesEditor/wiki/Usage";
 
 	protected PopupBrowserLauncher browserLauncher = null;
 
@@ -41,6 +43,9 @@ public class PreferencesEditorController {
 
 	@FXML
 	protected MenuItem helpAboutMenuItem;
+
+	@FXML
+	protected MenuItem helpUsageMenuItem;
 
 	protected HostServices hostServices = null;
 
@@ -76,23 +81,39 @@ public class PreferencesEditorController {
 
 	@FXML // Root pane
 	protected BorderPane rootPane;
+	
+	protected void setupBrowserLauncher() {
+		if (browserLauncher == null) {
+			Object userObject = rootPane.getUserData();
+
+			if (userObject instanceof HostServices) {
+				hostServices = (HostServices) userObject;
+			}
+			
+			browserLauncher = new PopupBrowserLauncher(hostServices);
+		}
+	}
+	
 	@FXML // This method is called by the FXMLLoader when initialization is complete
 	protected void initialize() {
 //		System.out.println("SampleController.initialize(): prefsTreeView.getClass() = " + prefsTreeView.getClass());
 
-		Object userObject = rootPane.getUserData();
-
-		if (userObject instanceof HostServices) {
-			hostServices = (HostServices) userObject;
-		}
-		
-		browserLauncher = new PopupBrowserLauncher(hostServices);
-		
 		fileExitMenuItem.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent arg0) {
 				System.exit(0);
+			}
+			
+		});
+		
+		helpUsageMenuItem.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				setupBrowserLauncher();
+				
+				browserLauncher.popup(HELP_USAGE_URL);
 			}
 			
 		});
@@ -104,6 +125,8 @@ public class PreferencesEditorController {
 				URL url = getClass().getResource(HELP_ABOUT_RESOURCE);
 				
 				if (url != null) {
+					setupBrowserLauncher();
+					
 					browserLauncher.openWebViewDialog(url.toExternalForm());
 				}
 			}

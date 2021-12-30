@@ -66,6 +66,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
+                  <MenuItem fx:id="helpUsageMenuItem" mnemonicParsing="false" text="Usage" />
               <MenuItem fx:id="helpAboutMenuItem" mnemonicParsing="false" text="About" />
             </items>
           </Menu>
