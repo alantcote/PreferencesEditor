@@ -22,6 +22,40 @@ public class PopupBrowserLauncher {
 	}
 	
 	/**
+	 * Open a non-modal dialog containing a display of the web page addressed by
+	 * the URL.
+	 * @param url the URL.
+	 */
+	public void openWebViewDialog(String url) {
+		openWebViewDialog(url, 600, 800);
+	}
+
+	/**
+	 * Open a non-modal dialog containing a display of the web page addressed by
+	 * the URL.
+	 * @param url the URL.
+	 * @param height height for the content.
+	 * @param width width for the content.
+	 */
+	public void openWebViewDialog(String url, double height, double width) {
+		WebView webView = new WebView();
+		WebEngine webEngine = webView.getEngine();
+		Dialog<String> dialog = new Dialog<>();
+		DialogPane dialogPane = dialog.getDialogPane();
+		ButtonType buttonType = new ButtonType("OK", ButtonData.OK_DONE);
+		
+		dialogPane.setContent(webView);
+		dialogPane.getButtonTypes().add(buttonType);
+		
+		webEngine.load(url);
+		
+		webView.setPrefHeight(height);
+		webView.setPrefWidth(width);
+		
+		dialog.show();
+	}
+	
+	/**
 	 * Try to pop up a browser that is displaying the web page addressed by the
 	 * URL.
 	 * 
@@ -41,25 +75,5 @@ public class PopupBrowserLauncher {
 			openWebViewDialog(url);
 		}
 		
-	}
-
-	/**
-	 * Open a non-modal dialog containing a display of the web page addressed by
-	 * the URL.
-	 * @param url the URL.
-	 */
-	public void openWebViewDialog(String url) {
-		WebView webView = new WebView();
-		WebEngine webEngine = webView.getEngine();
-		Dialog<String> dialog = new Dialog<>();
-		DialogPane dialogPane = dialog.getDialogPane();
-		ButtonType buttonType = new ButtonType("OK", ButtonData.OK_DONE);
-		
-		dialogPane.setContent(webView);
-		dialogPane.getButtonTypes().add(buttonType);
-		
-		webEngine.load(url);
-		
-		dialog.show();
 	}
 }

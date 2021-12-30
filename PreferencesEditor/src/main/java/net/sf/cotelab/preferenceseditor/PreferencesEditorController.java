@@ -127,7 +127,7 @@ public class PreferencesEditorController {
 				if (url != null) {
 					setupBrowserLauncher();
 					
-					browserLauncher.openWebViewDialog(url.toExternalForm());
+					browserLauncher.openWebViewDialog(url.toExternalForm(), 300, 400);
 				}
 			}
 			
