@@ -2,7 +2,7 @@ package net.sf.cotelab.preferenceseditor;
 
 import java.util.prefs.BackingStoreException;
 
-import cotelab.util.javafx.windowprefs.WindowPrefs;
+import io.github.alantcote.clutilities.javafx.windowprefs.WindowPrefs;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
