@@ -1,4 +1,4 @@
-package net.sf.cotelab.preferenceseditor;
+package io.github.alantcote.preferenceseditor;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

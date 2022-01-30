@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootPane" prefHeight="425.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="net.sf.cotelab.preferenceseditor.PreferencesEditorController">
+<BorderPane fx:id="rootPane" prefHeight="425.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.alantcote.preferenceseditor.PreferencesEditorController">
    <left>
       <TreeView fx:id="prefsTreeView" editable="true" prefHeight="400.0" prefWidth="300.0" showRoot="false" BorderPane.alignment="CENTER" />
    </left>

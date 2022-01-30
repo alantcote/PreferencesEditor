@@ -3,7 +3,7 @@
  *
  */
 module preferenceseditor {
-	exports net.sf.cotelab.preferenceseditor;
+	exports io.github.alantcote.preferenceseditor;
 	
 	requires clutilities;
 	requires java.prefs;
@@ -13,5 +13,5 @@ module preferenceseditor {
 	requires transitive javafx.graphics;
 	requires javafx.web;
 	
-	opens net.sf.cotelab.preferenceseditor to javafx.fxml;
+	opens io.github.alantcote.preferenceseditor to javafx.fxml;
 }

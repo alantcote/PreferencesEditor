@@ -1,4 +1,4 @@
-package net.sf.cotelab.preferenceseditor;
+package io.github.alantcote.preferenceseditor;
 
 import javafx.application.HostServices;
 import javafx.scene.control.ButtonBar.ButtonData;

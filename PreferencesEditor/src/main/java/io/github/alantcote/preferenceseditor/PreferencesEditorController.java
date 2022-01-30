@@ -2,7 +2,7 @@
  * Sample Skeleton for 'Sample.fxml' Controller Class
  */
 
-package net.sf.cotelab.preferenceseditor;
+package io.github.alantcote.preferenceseditor;
 
 import java.net.URL;
 import java.util.ResourceBundle;

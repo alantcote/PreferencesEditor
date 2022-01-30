@@ -1,4 +1,4 @@
-package net.sf.cotelab.preferenceseditor;
+package io.github.alantcote.preferenceseditor;
 
 import javafx.util.StringConverter;
 
