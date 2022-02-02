@@ -186,8 +186,17 @@ public class PropsPaneController {
 			prefs = newPrefs;
 		}
 
-		for (Preference aPref : prefItems) {
-			prefs.put(aPref.getKey(), aPref.getDef());
+		try {
+			prefs.clear();
+
+			for (Preference aPref : prefItems) {
+				prefs.put(aPref.getKey(), aPref.getDef());
+			}
+			
+			prefs.sync();
+		} catch (BackingStoreException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		setPreferences(prefs);
