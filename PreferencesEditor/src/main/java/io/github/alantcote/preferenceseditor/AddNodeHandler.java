@@ -101,7 +101,7 @@ public class AddNodeHandler implements EventHandler<ActionEvent> {
 						Preferences updatedPref = existingPref.node(absPath);
 						PreferencesTreeItem boundItem = (PreferencesTreeItem) preferencesTreeCell.getTreeItem();
 						TreeView<Preferences> boundTree = preferencesTreeCell.getTreeView();
-						
+
 						boundItem.setValue(updatedPref);
 //						boundItem.setChildItemsCached(false);
 						boundTree.refresh();

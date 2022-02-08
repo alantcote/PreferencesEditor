@@ -6,9 +6,9 @@ import javafx.event.EventHandler;
 import javafx.scene.control.TableView;
 
 public class AddRowHandler implements EventHandler<ActionEvent> {
-	protected TableView<Preference> table;
 	protected PropsPaneController propsPaneController;
-	
+	protected TableView<Preference> table;
+
 	public AddRowHandler(TableView<Preference> aTable, PropsPaneController aPropsPaneController) {
 		table = aTable;
 		propsPaneController = aPropsPaneController;
@@ -18,9 +18,9 @@ public class AddRowHandler implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent arg0) {
 		ObservableList<Preference> model = table.getItems();
 		Preference pref = new Preference("new key", "new def");
-		
+
 		model.add(pref);
-		
+
 		propsPaneController.startEditing();
 	}
 

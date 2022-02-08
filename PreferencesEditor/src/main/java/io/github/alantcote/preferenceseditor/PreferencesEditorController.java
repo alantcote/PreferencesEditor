@@ -1,7 +1,3 @@
-/**
- * Sample Skeleton for 'Sample.fxml' Controller Class
- */
-
 package io.github.alantcote.preferenceseditor;
 
 import java.net.URL;
@@ -27,8 +23,7 @@ import javafx.scene.layout.BorderPane;
 
 public class PreferencesEditorController {
 	public static final String HELP_ABOUT_RESOURCE = "helpAbout.html";
-	public static final String HELP_USAGE_URL =
-			"https://github.com/alantcote/PreferencesEditor/wiki/Usage";
+	public static final String HELP_USAGE_URL = "https://github.com/alantcote/PreferencesEditor/wiki/Usage";
 
 	protected PopupBrowserLauncher browserLauncher = null;
 
@@ -81,19 +76,7 @@ public class PreferencesEditorController {
 
 	@FXML // Root pane
 	protected BorderPane rootPane;
-	
-	protected void setupBrowserLauncher() {
-		if (browserLauncher == null) {
-			Object userObject = rootPane.getUserData();
 
-			if (userObject instanceof HostServices) {
-				hostServices = (HostServices) userObject;
-			}
-			
-			browserLauncher = new PopupBrowserLauncher(hostServices);
-		}
-	}
-	
 	@FXML // This method is called by the FXMLLoader when initialization is complete
 	protected void initialize() {
 //		System.out.println("SampleController.initialize(): prefsTreeView.getClass() = " + prefsTreeView.getClass());
@@ -104,33 +87,33 @@ public class PreferencesEditorController {
 			public void handle(ActionEvent arg0) {
 				System.exit(0);
 			}
-			
+
 		});
-		
+
 		helpUsageMenuItem.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent arg0) {
 				setupBrowserLauncher();
-				
+
 				browserLauncher.popup(HELP_USAGE_URL);
 			}
-			
+
 		});
-		
+
 		helpAboutMenuItem.setOnAction(new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent arg0) {
 				URL url = getClass().getResource(HELP_ABOUT_RESOURCE);
-				
+
 				if (url != null) {
 					setupBrowserLauncher();
-					
+
 					browserLauncher.openWebViewDialog(url.toExternalForm(), 300, 400);
 				}
 			}
-			
+
 		});
 
 		inizPrefsTreeView();
@@ -157,11 +140,23 @@ public class PreferencesEditorController {
 				prefsPaneTable, propsPaneApplyButton, propsPaneCancelButton, propsPaneNameField);
 	}
 
+	protected void setupBrowserLauncher() {
+		if (browserLauncher == null) {
+			Object userObject = rootPane.getUserData();
+
+			if (userObject instanceof HostServices) {
+				hostServices = (HostServices) userObject;
+			}
+
+			browserLauncher = new PopupBrowserLauncher(hostServices);
+		}
+	}
+
 	protected void wirePropsPaneToPrefsTreeView() {
 		MultipleSelectionModel<TreeItem<Preferences>> treeSelModel = prefsTreeView.getSelectionModel();
 		ObservableList<? extends Integer> prefsTreeViewSelectIndices = treeSelModel.getSelectedIndices();
 
-		System.out.println("PropsPaneController.wirePropsPaneToPrefsTreeView(): entry");
+//		System.out.println("PropsPaneController.wirePropsPaneToPrefsTreeView(): entry");
 
 		propsPaneController.setPreferences(null);
 
@@ -169,14 +164,14 @@ public class PreferencesEditorController {
 
 			@Override
 			public void onChanged(Change<? extends Integer> arg0) {
-				System.out.println("prefsTreeView selection change: arg0 = " + arg0);
+//				System.out.println("prefsTreeView selection change: arg0 = " + arg0);
 
 				ObservableList<? extends Integer> prefsTreeViewSelectIndices = arg0.getList();
 
 				if (!prefsTreeViewSelectIndices.isEmpty()) {
 					int selIndex = prefsTreeViewSelectIndices.get(0);
 
-					System.out.println("prefsTreeView selection change: selIndex = " + selIndex);
+//					System.out.println("prefsTreeView selection change: selIndex = " + selIndex);
 
 					// tell the props pane about the change
 					propsPaneController.setPreferences(prefsTreeView.getTreeItem(selIndex).getValue());

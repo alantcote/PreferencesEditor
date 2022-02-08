@@ -14,7 +14,7 @@ public class PreferencesTreeItem extends TreeItem<Preferences> implements NodeCh
 
 	public PreferencesTreeItem(Preferences prefs) {
 		super(prefs);
-		
+
 		if (prefs != null) {
 			prefs.addNodeChangeListener(this);
 		}
@@ -53,13 +53,13 @@ public class PreferencesTreeItem extends TreeItem<Preferences> implements NodeCh
 
 	@Override
 	public ObservableList<TreeItem<Preferences>> getChildren() {
-		System.out.println("PreferencesTreeItem.getChildren(): pref = " + getValue());
+//		System.out.println("PreferencesTreeItem.getChildren(): pref = " + getValue());
 
 		if (children.isEmpty()) {
 			children.addAll(buildChildren(this));
 		}
 
-		System.out.println("PreferencesTreeItem.getChildren(): children = " + children);
+//		System.out.println("PreferencesTreeItem.getChildren(): children = " + children);
 
 		return children;
 	}
@@ -68,7 +68,7 @@ public class PreferencesTreeItem extends TreeItem<Preferences> implements NodeCh
 	public boolean isLeaf() {
 		boolean myLeaf = (0 == getChildren().size());
 
-		System.out.println("PreferencesTreeItem.isLeaf(): myLeaf = " + myLeaf);
+//		System.out.println("PreferencesTreeItem.isLeaf(): myLeaf = " + myLeaf);
 
 		return myLeaf;
 	}
@@ -78,7 +78,7 @@ public class PreferencesTreeItem extends TreeItem<Preferences> implements NodeCh
 		Preferences pref = treeItem.getValue();
 		String[] childrenNames;
 
-		System.out.println("PreferencesTreeItem.buildChildren(): pref = " + pref);
+//		System.out.println("PreferencesTreeItem.buildChildren(): pref = " + pref);
 
 		if (pref == null) {
 			// special case: null represents the overall root
@@ -92,11 +92,11 @@ public class PreferencesTreeItem extends TreeItem<Preferences> implements NodeCh
 			try {
 				childrenNames = pref.childrenNames();
 
-				System.out.println("PreferencesTreeItem.buildChildren(): childrenNames = " + childrenNames);
+//				System.out.println("PreferencesTreeItem.buildChildren(): childrenNames = " + childrenNames);
 
-				for (String childName : childrenNames) {
-					System.out.println("PreferencesTreeItem.buildChildren(): childName = " + childName);
-				}
+//				for (String childName : childrenNames) {
+//					System.out.println("PreferencesTreeItem.buildChildren(): childName = " + childName);
+//				}
 
 				if (childrenNames.length > 0) {
 					for (String childName : childrenNames) {
@@ -112,7 +112,7 @@ public class PreferencesTreeItem extends TreeItem<Preferences> implements NodeCh
 			}
 		}
 
-		System.out.println("PreferencesTreeItem.buildChildren(): children = " + children);
+//		System.out.println("PreferencesTreeItem.buildChildren(): children = " + children);
 
 		return children;
 	}

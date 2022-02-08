@@ -10,20 +10,23 @@ import javafx.scene.web.WebView;
 
 /**
  * A launcher that can pop up a browser.
+ * 
  * @author alantcote
  */
 public class PopupBrowserLauncher {
 	protected HostServices hostServices = null;
-	
-	public PopupBrowserLauncher() {}
+
+	public PopupBrowserLauncher() {
+	}
 
 	public PopupBrowserLauncher(HostServices theHostServices) {
 		hostServices = theHostServices;
 	}
-	
+
 	/**
-	 * Open a non-modal dialog containing a display of the web page addressed by
-	 * the URL.
+	 * Open a non-modal dialog containing a display of the web page addressed by the
+	 * URL.
+	 * 
 	 * @param url the URL.
 	 */
 	public void openWebViewDialog(String url) {
@@ -31,11 +34,12 @@ public class PopupBrowserLauncher {
 	}
 
 	/**
-	 * Open a non-modal dialog containing a display of the web page addressed by
-	 * the URL.
-	 * @param url the URL.
+	 * Open a non-modal dialog containing a display of the web page addressed by the
+	 * URL.
+	 * 
+	 * @param url    the URL.
 	 * @param height height for the content.
-	 * @param width width for the content.
+	 * @param width  width for the content.
 	 */
 	public void openWebViewDialog(String url, double height, double width) {
 		WebView webView = new WebView();
@@ -43,29 +47,29 @@ public class PopupBrowserLauncher {
 		Dialog<String> dialog = new Dialog<>();
 		DialogPane dialogPane = dialog.getDialogPane();
 		ButtonType buttonType = new ButtonType("OK", ButtonData.OK_DONE);
-		
+
 		dialogPane.setContent(webView);
 		dialogPane.getButtonTypes().add(buttonType);
-		
+
 		webEngine.load(url);
-		
+
 		webView.setPrefHeight(height);
 		webView.setPrefWidth(width);
-		
+
 		dialog.show();
 	}
-	
+
 	/**
-	 * Try to pop up a browser that is displaying the web page addressed by the
-	 * URL.
+	 * Try to pop up a browser that is displaying the web page addressed by the URL.
 	 * 
-	 * If an instance of {@link HostServices} has been provided, then it is
-	 * asked to open a native browser on the URL. Otherwise, an instance of
-	 * {@link Dialog} is popped up, wrapped around an instance of
-	 * {@link WebView} which is asked to open and display the URL.
+	 * If an instance of {@link HostServices} has been provided, then it is asked to
+	 * open a native browser on the URL. Otherwise, an instance of {@link Dialog} is
+	 * popped up, wrapped around an instance of {@link WebView} which is asked to
+	 * open and display the URL.
 	 * 
 	 * Unfortunately, there is no way to know whether either mechanism has been
 	 * successful. One must just hope.
+	 * 
 	 * @param url the URL.
 	 */
 	public void popup(String url) {
@@ -74,6 +78,6 @@ public class PopupBrowserLauncher {
 		} else {
 			openWebViewDialog(url);
 		}
-		
+
 	}
 }

@@ -8,7 +8,7 @@ import javafx.scene.control.TableView;
 public class DeleteRowHandler implements EventHandler<ActionEvent> {
 	protected PrefTableCell prefTableCell;
 	protected PropsPaneController propsPaneController;
-	
+
 	public DeleteRowHandler(PrefTableCell aPrefTableCell, PropsPaneController aPropsPaneController) {
 		prefTableCell = aPrefTableCell;
 		propsPaneController = aPropsPaneController;
@@ -19,10 +19,10 @@ public class DeleteRowHandler implements EventHandler<ActionEvent> {
 		TableView<Preference> table = prefTableCell.getTableView();
 		ObservableList<Preference> model = table.getItems();
 		int rowIndex = prefTableCell.getIndex();
-		
+
 		if (model.size() > rowIndex) {
 			model.remove(rowIndex);
-			
+
 			propsPaneController.startEditing();
 		}
 	}

@@ -18,12 +18,12 @@ public class Preference {
 		return def;
 	}
 
-	public String getKey() {
-		return keyProperty().get();
-	}
-
 	public String getDef() {
 		return defProperty().get();
+	}
+
+	public String getKey() {
+		return keyProperty().get();
 	}
 
 	public StringProperty keyProperty() {

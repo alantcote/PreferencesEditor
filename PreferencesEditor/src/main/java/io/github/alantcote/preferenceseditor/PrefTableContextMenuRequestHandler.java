@@ -8,10 +8,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.input.ContextMenuEvent;
 
 public class PrefTableContextMenuRequestHandler implements EventHandler<ContextMenuEvent> {
-	protected TableView<Preference> table;
 	protected PropsPaneController propsPaneController;
+	protected TableView<Preference> table;
 
-	public PrefTableContextMenuRequestHandler(TableView<Preference> aTable,PropsPaneController aPropsPaneController) {
+	public PrefTableContextMenuRequestHandler(TableView<Preference> aTable, PropsPaneController aPropsPaneController) {
 		table = aTable;
 		propsPaneController = aPropsPaneController;
 	}
@@ -34,5 +34,5 @@ public class PrefTableContextMenuRequestHandler implements EventHandler<ContextM
 			theMenu.show(table, x, y);
 		}
 	}
-	
+
 }

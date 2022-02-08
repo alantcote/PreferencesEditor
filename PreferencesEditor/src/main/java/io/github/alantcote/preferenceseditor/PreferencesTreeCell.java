@@ -12,7 +12,7 @@ public class PreferencesTreeCell extends TreeCell<Preferences> {
 	public static String textForPref(Preferences pref) {
 		String tfp;
 
-		System.out.println("PreferencesTreeCell.textForPref(): pref = " + pref);
+//		System.out.println("PreferencesTreeCell.textForPref(): pref = " + pref);
 
 		if (pref == null) {
 			tfp = "Preferences";
@@ -28,7 +28,7 @@ public class PreferencesTreeCell extends TreeCell<Preferences> {
 			}
 		}
 
-		System.out.println("PreferencesTreeCell.textForPref(): tfp = " + tfp);
+//		System.out.println("PreferencesTreeCell.textForPref(): tfp = " + tfp);
 
 		return tfp;
 	}
@@ -171,8 +171,8 @@ public class PreferencesTreeCell extends TreeCell<Preferences> {
 //	}
 
 	protected void updateItem(Preferences item, boolean empty) {
-		System.out.println("PreferencesTreeCell.updateItem(): item = " + item);
-		System.out.println("PreferencesTreeCell.updateItem(): empty = " + empty);
+//		System.out.println("PreferencesTreeCell.updateItem(): item = " + item);
+//		System.out.println("PreferencesTreeCell.updateItem(): empty = " + empty);
 
 		super.updateItem(item, empty);
 
@@ -181,10 +181,10 @@ public class PreferencesTreeCell extends TreeCell<Preferences> {
 			setText(null);
 			setGraphic(null);
 		} else {
-			System.out.println("PreferencesTreeCell.updateItem(): calling textForPref(item): item = " + item);
+//			System.out.println("PreferencesTreeCell.updateItem(): calling textForPref(item): item = " + item);
 
 			String tfp = textForPref(item);
-			
+
 			setText(textForPref(item));
 			setTooltip(new Tooltip(tfp));
 		}

@@ -123,7 +123,7 @@ public class PropsPaneController {
 	public void setPreferences(Preferences prefsItem) {
 		setPreferencesProp(prefsItem);
 
-		System.out.println("PropsPaneController.setPreferencesItem(): prefsItem = " + prefsItem);
+//		System.out.println("PropsPaneController.setPreferencesItem(): prefsItem = " + prefsItem);
 
 		cancelEditing();
 	}
@@ -192,7 +192,7 @@ public class PropsPaneController {
 			for (Preference aPref : prefItems) {
 				prefs.put(aPref.getKey(), aPref.getDef());
 			}
-			
+
 			prefs.sync();
 		} catch (BackingStoreException e) {
 			// TODO Auto-generated catch block
@@ -301,7 +301,7 @@ public class PropsPaneController {
 	}
 
 	protected void setNameFieldContent(Preferences preferencesItem) {
-		System.out.println("PropsPaneController.setNameFieldContent(): preferencesItem = " + preferencesItem);
+//		System.out.println("PropsPaneController.setNameFieldContent(): preferencesItem = " + preferencesItem);
 		nodeNameTextField.setText(PreferencesTreeCell.textForPref(preferencesItem));
 	}
 

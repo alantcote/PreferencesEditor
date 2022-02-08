@@ -11,7 +11,8 @@ public class PrefTableCellContextMenuRequestHandler implements EventHandler<Cont
 	protected PrefTableCell prefTableCell;
 	protected PropsPaneController propsPaneController;
 
-	public PrefTableCellContextMenuRequestHandler(PrefTableCell aPrefTableCell, PropsPaneController aPropsPaneController) {
+	public PrefTableCellContextMenuRequestHandler(PrefTableCell aPrefTableCell,
+			PropsPaneController aPropsPaneController) {
 		prefTableCell = aPrefTableCell;
 		propsPaneController = aPropsPaneController;
 	}
