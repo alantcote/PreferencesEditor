@@ -36,7 +36,7 @@
         <javafx.main.class>io.github.alantcote.preferenceseditor.PreferencesEditor</javafx.main.class>
         <main.class>${javafx.main.class}</main.class>
 		<javafx.classifier>win</javafx.classifier>
-		<openjfx.version>18-ea+10</openjfx.version>
+		<openjfx.version>19-ea+2</openjfx.version>
 	</properties>
 
 	<distributionManagement>
