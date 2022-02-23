@@ -26,6 +26,9 @@
 			<outputDirectory>lib</outputDirectory>
 			<excludes>
 				<exclude>${project.groupId}:${project.artifactId}:jar:*</exclude>
+				<exclude>*:juni*:jar:*</exclude>
+				<exclude>*:mvvm*:jar:*</exclude>
+				<exclude>*:opent*:jar:*</exclude>
 			</excludes>
 		</dependencySet>
 	</dependencySets>
