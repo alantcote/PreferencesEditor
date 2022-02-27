@@ -2,7 +2,7 @@ package io.github.alantcote.preferenceseditor;
 
 import java.util.prefs.BackingStoreException;
 
-import io.github.alantcote.clutilities.javafx.windowprefs.WindowPrefs;
+import io.github.alantcote.fxutilities.javafx.windowprefs.WindowPrefs;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;

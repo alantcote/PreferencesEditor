@@ -5,7 +5,7 @@
 module preferenceseditor {
 	exports io.github.alantcote.preferenceseditor;
 	
-	requires clutilities;
+	requires fxutilities;
 	requires java.prefs;
 	requires javafx.base;
 	requires javafx.controls;
